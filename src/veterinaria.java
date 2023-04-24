@@ -1,5 +1,6 @@
 
 ///clase para ejecutar consola
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class veterinaria {
@@ -104,7 +105,8 @@ public class veterinaria {
                 System.out.print("Edad: ");
                 edadAnimal=entradaScanner.nextByte();
                 entradaScanner.nextLine();
-                animalPerro perro1= new animalPerro(colorAnimal, edadAnimal, precioAnimal, origenAnimal, nombreAnimal);
+                perros.add(new animalPerro(colorAnimal, edadAnimal, precioAnimal, origenAnimal, nombreAnimal));
+                //animalPerro perro1= new animalPerro(colorAnimal, edadAnimal, precioAnimal, origenAnimal, nombreAnimal);
                 break;
                 case 2: //precio,origen,nombre,raza,cantidad de dientes
                 System.out.println(" \n\t\t Información  de "+ nombreAnimal);
@@ -117,7 +119,8 @@ public class veterinaria {
                 razaAnimal=entradaScanner.nextLine();
                 System.out.print("Cantidad de dientes: ");
                 cantidadDientesAnimal=entradaScanner.nextByte();
-                animalGato gato1=new animalGato(precioAnimal, origenAnimal, nombreAnimal, razaAnimal, cantidadDientesAnimal);
+                gatos.add(new animalGato(precioAnimal, origenAnimal, nombreAnimal, razaAnimal, cantidadDientesAnimal));
+                //animalGato gato1=new animalGato(precioAnimal, origenAnimal, nombreAnimal, razaAnimal, cantidadDientesAnimal);
                 entradaScanner.nextLine();
                 
                 break;
@@ -130,4 +133,6 @@ public class veterinaria {
     }
     private Scanner entradaScanner = new Scanner(System.in);
     private byte opcionMenuPrincipal = 0;
+    ArrayList <animalPerro> perros = new ArrayList<>();
+    ArrayList <animalGato> gatos = new ArrayList<>();
 }
