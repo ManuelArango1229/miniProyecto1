@@ -16,18 +16,8 @@ public class animalGato extends animalVeterinaria{
         this.cantidadDientes = cantidadDientes;
     }
 
-    public String getRaza() {
-        return raza;
-    }
-
-
-
-    public short getCantidadDientes() {
-        return cantidadDientes;
-    }
 
 
     private String raza;
     private short cantidadDientes;
-    
 }
