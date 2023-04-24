@@ -16,6 +16,15 @@ public class animalPerro extends animalVeterinaria {
         this.edad = edad;
     }
 
+    public String getColorPelo() {
+        return colorPelo;
+    }
+
+
+
+    public short getEdad() {
+        return edad;
+    }
 
     ////// atributos propios de los perros ----> por definir
     private String colorPelo;
