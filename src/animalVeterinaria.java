@@ -1,10 +1,11 @@
 public abstract class animalVeterinaria implements vacunasAnimales{ 
 
 
-    public animalVeterinaria(Double precio, String origen,String nombre){
+    public animalVeterinaria(Double precio, String origen,String nombre,byte ID){
         this.cuantoCuesta=precio;
         this.paisOrigen=origen;
         this.nombreDelanimal=nombre;
+        this.ID=ID;
     }
 
     
@@ -29,12 +30,20 @@ public abstract class animalVeterinaria implements vacunasAnimales{
         this.nombreDelanimal = nombreDelanimal;
     }
 
+    public byte getID() {
+        return ID;
+    }
+
+
+    public void setID(byte iD) {
+        ID = iD;
+    }
     ////// atributos en común
     private String nombreDelanimal;
     private Double cuantoCuesta;
     private String paisOrigen;
+    private byte ID;
     //////
     
-
 
 }

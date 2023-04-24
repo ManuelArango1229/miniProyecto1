@@ -1,8 +1,8 @@
 //clase para crear objetos de tipo perro
 
 public class animalPerro extends animalVeterinaria {
-    public animalPerro(String color, short edad, Double precio, String origen,String nombre){
-        super(precio ,origen,nombre);
+    public animalPerro(String color, short edad, Double precio, String origen,String nombre,byte ID){
+        super(precio ,origen,nombre,ID);
         this.colorPelo=color;
         this.edad=edad;
     }
