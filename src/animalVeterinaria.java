@@ -1,4 +1,6 @@
-public abstract class animalVeterinaria implements vacunasAnimales{ 
+import java.util.ArrayList;
+
+public abstract class animalVeterinaria{ 
 
 
     public animalVeterinaria(Double precio, String origen,String nombre){
@@ -29,11 +31,19 @@ public abstract class animalVeterinaria implements vacunasAnimales{
         this.nombreDelanimal = nombreDelanimal;
     }
 
+    public void agregarVacuna(String n) {
+        vacunas.add(n);
+    }
+
+    public ArrayList<String> setVacunas(){
+        return vacunas;
+    }
+
     ////// atributos en común
     private String nombreDelanimal;
     private Double cuantoCuesta;
     private String paisOrigen;
-    
+    private ArrayList<String> vacunas= new ArrayList<>();
     //////
     
 

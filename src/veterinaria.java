@@ -108,6 +108,27 @@ public class veterinaria {
                     edadAnimal = entradaScanner.nextShort();
                     entradaScanner.nextLine();
                     perros.add(new animalPerro(colorAnimal, edadAnimal, precioAnimal, origenAnimal, nombreAnimal));
+                    System.out.println("tiene vacunas el perro? \n1. si \t 2. no");
+                    byte opcion;
+                    opcion=entradaScanner.nextByte();
+                    entradaScanner.nextLine();
+                    if(opcion==1){
+                        while(true){
+                            String nomvac;
+                            System.out.println("digite una vacuna: ");
+                            nomvac=entradaScanner.nextLine();
+                            perros.get(perros.size()-1).agregarVacuna(nomvac);
+                            System.out.println("Desea ingresar otra vacuna \n1. si\t2. no");
+                            opcion=entradaScanner.nextByte();
+                            entradaScanner.nextLine();
+                            if(opcion==1){
+                                continue;
+                            }else{
+                                break;
+                            }
+                                
+                        }
+                    }
                     System.out.println("\t El perro ha sido registrado con exito.");
                     System.out.println("\t\t Su id es: " + perros.get(iteradorPerro).getId());
                     iteradorPerro++;
@@ -123,8 +144,7 @@ public class veterinaria {
                     razaAnimal = entradaScanner.nextLine();
                     System.out.print("Cantidad de dientes: ");
                     cantidadDientesAnimal = entradaScanner.nextByte();
-                    gatos.add(new animalGato(precioAnimal, origenAnimal, nombreAnimal, razaAnimal,
-                            cantidadDientesAnimal));
+                    gatos.add(new animalGato(precioAnimal, origenAnimal, nombreAnimal, razaAnimal,cantidadDientesAnimal));
                     entradaScanner.nextLine();
                     System.out.println("\t El gato ha sido registrado con exito.");
                     System.out.println("\t\t Su id es: " + gatos.get(iteradorGato).getId());
