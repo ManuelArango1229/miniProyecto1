@@ -33,6 +33,7 @@ public abstract class animalVeterinaria implements vacunasAnimales{
     private String nombreDelanimal;
     private Double cuantoCuesta;
     private String paisOrigen;
+    
     //////
     
 
