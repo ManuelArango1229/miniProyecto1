@@ -49,11 +49,11 @@ public class veterinaria {
                 borrarConsola();
                 break;
             case 3:
-                System.out.println("Funcionó");
+                funciones.eliminarMascota();
                 borrarConsola();
                 break;
             case 4:
-                System.out.println("Funcionó");
+                funciones.buscarMascotaNombre();
                 borrarConsola();
                 break;
             case 5:
@@ -253,7 +253,116 @@ public class veterinaria {
             }
         }
 
+        public void eliminarMascota() {
+            System.out.println("\n\t\t -- E L I M I N A R  M A S C O T A --");
+            System.out.println("\t\t 1.Perro ");
+            System.out.println("\t\t 2. Gato ");
+            System.out.print("\tingrese el tipo: ");
+            opAnimaL = entradaScanner.nextByte();
+            entradaScanner.nextLine();
+            switch (opAnimaL) {
+                case 1:
+                    if (perros.isEmpty()) {
+                        System.out.println("No hay mascota perro por eliminar ");
+                    } else {
+                        System.out.print("Ingrese el ID: ");
+                        IDAnimal = entradaScanner.nextShort();
+                        for (int i = 0; i < perros.size(); i++) {
+                            if (perros.get(i).getId() == IDAnimal) {
+                                perros.remove(i);
+                                System.out.println("La mascota se ha eliminado con exito");
+                                iteradorPerro--;
+                                break;
+                            } else {
+                                System.out.println("No se ha encontrado la mascota");
+                            }
+                        }
+                    }
+                    break;
+                    case 2:
+                    if (gatos.isEmpty()) {
+                        System.out.println("No hay mascota gato por eliminar ");
+                    } else {
+                        System.out.print("Ingrese el ID: ");
+                        IDAnimal = entradaScanner.nextShort();
+                        for (int i = 0; i < gatos.size(); i++) {
+                            if (gatos.get(i).getId() == IDAnimal) {
+                                gatos.remove(i);
+                                System.out.println("La mascota se ha eliminado con exito");
+                                 iteradorGato--;
+                                break;
+                            } else {
+                                System.out.println("No se ha encontrado la mascota");
+                            }
+                        }
+                    }
+                    break;
+
+                default:
+                System.out.println("Opcion invalida");
+                    break;
+            }
+        }
         
+        public void buscarMascotaNombre(){
+            System.out.println("\n\t\t -- B U S C A R  M A S C O T A  N O M B R E --");
+            System.out.println("\t\t 1.Perro ");
+            System.out.println("\t\t 2. Gato ");
+            System.out.print("\tingrese el tipo: ");
+            opAnimaL = entradaScanner.nextByte();
+            entradaScanner.nextLine();
+            switch (opAnimaL) {
+                case 1:
+                    if (perros.isEmpty()) {
+                        System.out.println("No hay mascota perro por buscar ");
+                    } else {
+                        System.out.print("\tIngrese el nombre: ");
+                        nombreAnimal=entradaScanner.nextLine();
+                        for (int i = 0; i < perros.size(); i++) {
+                            if (perros.get(i).getNombreDelanimal().equals(nombreAnimal)) {
+                                System.out.println("\n\t\t I N F O R M A C I O N  A N I M A L");
+                                System.out.println("Nombre: " + perros.get(i).getNombreDelanimal());
+                                System.out.println("Identificador: " + perros.get(i).getId());
+                                System.out.println("País de origen: " + perros.get(i).getPaisOrigen());
+                                System.out.println("Costo:" + perros.get(i).getCuantoCuesta());
+                                System.out.println("Color de pelo: " + perros.get(i).getColorPelo());
+                                 System.out.println("Edad: " + perros.get(i).getEdad());
+                                 System.out.println("___________________________________________________________");
+                                break;
+                            } else {
+                                System.out.println("No se ha encontrado la mascota");
+                            }
+                        }
+                    }
+                    break;
+                    case 2:
+                    if (gatos.isEmpty()) {
+                        System.out.println("No hay mascota gato por buscar ");
+                    } else {
+                        System.out.print("Ingrese el nombre: ");
+                        nombreAnimal=entradaScanner.nextLine();
+                        for (int i = 0; i < gatos.size(); i++) {
+                            if (gatos.get(i).getNombreDelanimal().equals(nombreAnimal)) {
+                                System.out.println("I N F O R M A C I O N  A N I M A L");
+                                System.out.println("Nombre: " + gatos.get(i).getNombreDelanimal());
+                                System.out.println("Identificador: " + gatos.get(i).getId());
+                                System.out.println("País de origen: " + gatos.get(i).getPaisOrigen());
+                                System.out.println("Costo:" + gatos.get(i).getCuantoCuesta());
+                                System.out.println("Raza: " + gatos.get(i).getRaza());
+                                System.out.println("Cantidad de dientes: " + gatos.get(i).getCantidadDientes());
+                                System.out.println("\t___________________________________________________________");
+                                break;
+                            } else {
+                                System.out.println("No se ha encontrado la mascota");
+                            }
+                        }
+                    }
+                    break;
+                default:
+                System.out.println("Opcion invalida");
+                    break;
+            }
+        }
         public void imprimirMascotas(){
             System.out.println("\n\t -- M A S C O T A S  R E G I S T R A D A S --");
             System.out.println("\n\t   - p e r r o s  r e g i s t r a d o s  -");
