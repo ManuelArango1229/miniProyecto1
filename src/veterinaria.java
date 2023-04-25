@@ -45,7 +45,8 @@ public class veterinaria {
                 borrarConsola();
                 break;
             case 2:
-                funciones.actualizarMascota();;
+                funciones.actualizarMascota();
+                ;
                 borrarConsola();
                 break;
             case 3:
@@ -109,24 +110,25 @@ public class veterinaria {
                     entradaScanner.nextLine();
                     perros.add(new animalPerro(colorAnimal, edadAnimal, precioAnimal, origenAnimal, nombreAnimal));
                     System.out.println("tiene vacunas el perro? \n1. si \t 2. no");
+                    System.out.print("Ingrese la opción: ");
                     byte opcion;
-                    opcion=entradaScanner.nextByte();
+                    opcion = entradaScanner.nextByte();
                     entradaScanner.nextLine();
-                    if(opcion==1){
-                        while(true){
-                            String nomvac;
-                            System.out.println("digite una vacuna: ");
-                            nomvac=entradaScanner.nextLine();
-                            perros.get(perros.size()-1).agregarVacuna(nomvac);
-                            System.out.println("Desea ingresar otra vacuna \n1. si\t2. no");
-                            opcion=entradaScanner.nextByte();
+                    if (opcion == 1) {
+                        while (true) {
+                            System.out.print("digite el nombre de la vacuna: ");
+                            nomvac = entradaScanner.nextLine();
+                            perros.get(iteradorPerro).agregarVacuna(nomvac);
+                            System.out.println("¿Desea ingresar otra vacuna? \n1. si\t2. no");
+                            System.out.print("Ingrese la opción: ");
+                            opcion = entradaScanner.nextByte();
                             entradaScanner.nextLine();
-                            if(opcion==1){
+                            if (opcion == 1) {
                                 continue;
-                            }else{
+                            } else {
                                 break;
                             }
-                                
+
                         }
                     }
                     System.out.println("\t El perro ha sido registrado con exito.");
@@ -144,8 +146,30 @@ public class veterinaria {
                     razaAnimal = entradaScanner.nextLine();
                     System.out.print("Cantidad de dientes: ");
                     cantidadDientesAnimal = entradaScanner.nextByte();
-                    gatos.add(new animalGato(precioAnimal, origenAnimal, nombreAnimal, razaAnimal,cantidadDientesAnimal));
+                    gatos.add(new animalGato(precioAnimal, origenAnimal, nombreAnimal, razaAnimal,
+                            cantidadDientesAnimal));
                     entradaScanner.nextLine();
+                    System.out.println("tiene vacunas el perro? \n1. si \t 2. no");
+                    System.out.print("Ingrese la opción: ");
+                    opcion = entradaScanner.nextByte();
+                    entradaScanner.nextLine();
+                    if (opcion == 1) {
+                        while (true) {
+                            System.out.print("digite el nombre de la vacuna: ");
+                            nomvac = entradaScanner.nextLine();
+                            gatos.get(iteradorGato).agregarVacuna(nomvac);
+                            System.out.println("¿Desea ingresar otra vacuna? \n1. si\t2. no");
+                            System.out.print("Ingrese la opción: ");
+                            opcion = entradaScanner.nextByte();
+                            entradaScanner.nextLine();
+                            if (opcion == 1) {
+                                continue;
+                            } else {
+                                break;
+                            }
+
+                        }
+                    }
                     System.out.println("\t El gato ha sido registrado con exito.");
                     System.out.println("\t\t Su id es: " + gatos.get(iteradorGato).getId());
                     iteradorGato++;
@@ -207,10 +231,11 @@ public class veterinaria {
         }
 
         private void switchPerroActualizar(int i) {
-            System.out.println("1. color");
-            System.out.println("2.edad");
-            System.out.println("3.precio");
-            System.out.println("4.origen");
+            System.out.println("1. Color");
+            System.out.println("2. Edad");
+            System.out.println("3. Precio");
+            System.out.println("4. Origen");
+            System.out.println("5. Vacunas");
             System.out.print("¿Qué desea actualizar?: ");
             actualizarAnimal = entradaScanner.nextByte();
             entradaScanner.nextLine();
@@ -238,6 +263,11 @@ public class veterinaria {
                     origenAnimal = entradaScanner.nextLine();
                     perros.get(i).setPaisOrigen(origenAnimal);
                     break;
+                case 5:
+                    System.out.print("Ingrese la nueva vacuna: ");
+                    nomvac = entradaScanner.nextLine();
+                    perros.get(i).agregarVacuna(nomvac);
+                    break;
                 default:
                     System.out.println("Opción invalida");
                     break;
@@ -245,9 +275,10 @@ public class veterinaria {
         }
 
         private void switchGatoActualizar(int i) {
-            System.out.println("1. cantidad de dientes");
-            System.out.println("2.precio");
-            System.out.println("3.origen");
+            System.out.println("1. Cantidad de dientes");
+            System.out.println("2. Precio");
+            System.out.println("3. Origen");
+            System.out.println("4. Vacunas");
             System.out.print("¿Qué desea actualizar?: ");
             actualizarAnimal = entradaScanner.nextByte();
             entradaScanner.nextLine();
@@ -269,14 +300,16 @@ public class veterinaria {
                     origenAnimal = entradaScanner.nextLine();
                     gatos.get(i).setPaisOrigen(origenAnimal);
                     break;
+                case 4:
+                    System.out.print("Ingrese la nueva vacuna: ");
+                    nomvac = entradaScanner.nextLine();
+                    gatos.get(i).agregarVacuna(nomvac);
+                    break;
                 default:
                     System.out.println("Opción invalida");
                     break;
             }
         }
-
-      
- 
 
         public void eliminarMascota() {
             System.out.println("\n\t\t -- E L I M I N A R  M A S C O T A --");
@@ -352,6 +385,7 @@ public class veterinaria {
                                 System.out.println("Costo:" + perros.get(i).getCuantoCuesta());
                                 System.out.println("Color de pelo: " + perros.get(i).getColorPelo());
                                 System.out.println("Edad: " + perros.get(i).getEdad());
+                                System.out.println("Vacunas: " + perros.get(i).setVacunas());
                                 System.out.println("___________________________________________________________");
                                 break;
                             } else {
@@ -375,6 +409,7 @@ public class veterinaria {
                                 System.out.println("Costo:" + gatos.get(i).getCuantoCuesta());
                                 System.out.println("Raza: " + gatos.get(i).getRaza());
                                 System.out.println("Cantidad de dientes: " + gatos.get(i).getCantidadDientes());
+                                System.out.println("Vacunas: " + gatos.get(i).setVacunas());
                                 System.out.println("___________________________________________________________");
                                 break;
                             } else {
@@ -396,12 +431,13 @@ public class veterinaria {
                 System.out.println("No hay perros registrados");
             } else {
                 for (int i = 0; i < perros.size(); i++) {
-                    System.out.println("Identificador: " + perros.get(i).getId());
+                    System.out.println("\nIdentificador: " + perros.get(i).getId());
                     System.out.println("Nombre: " + perros.get(i).getNombreDelanimal());
                     System.out.println("País de origen: " + perros.get(i).getPaisOrigen());
                     System.out.println("Costo:" + perros.get(i).getCuantoCuesta());
                     System.out.println("Color de pelo: " + perros.get(i).getColorPelo());
                     System.out.println("Edad: " + perros.get(i).getEdad());
+                    System.out.println("Vacunas: " + perros.get(i).setVacunas());
                     System.out.println("\n ________________________________________________________________________");
                 }
             }
@@ -411,19 +447,20 @@ public class veterinaria {
                 System.out.println("No hay gatos registrados");
             } else {
                 for (int i = 0; i < gatos.size(); i++) {
-                    System.out.println("Identificador: " + gatos.get(i).getId());
+                    System.out.println("\nIdentificador: " + gatos.get(i).getId());
                     System.out.println("Nombre: " + gatos.get(i).getNombreDelanimal());
                     System.out.println("País de origen: " + gatos.get(i).getPaisOrigen());
                     System.out.println("Costo:" + gatos.get(i).getCuantoCuesta());
                     System.out.println("Raza: " + gatos.get(i).getRaza());
                     System.out.println("Cantidad de dientes: " + gatos.get(i).getCantidadDientes());
+                    System.out.println("Vacunas: " + gatos.get(i).setVacunas());
                     System.out.println("\n ________________________________________________________________________");
                 }
             }
         }
 
-        private byte opAnimaL,actualizarAnimal;
-        private String nombreAnimal, colorAnimal, origenAnimal, razaAnimal;
+        private byte opAnimaL, actualizarAnimal;
+        private String nombreAnimal, colorAnimal, origenAnimal, razaAnimal, nomvac;;
         private Double precioAnimal;
         private short cantidadDientesAnimal, edadAnimal, IDAnimal;
     }
