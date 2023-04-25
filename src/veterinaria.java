@@ -80,7 +80,9 @@ public class veterinaria {
             /* No hacer nada */
         }
     }
-
+    public void segundoMenu(){
+        
+    }
     private class FuncionamientoMenuPrincipal {
         public FuncionamientoMenuPrincipal() {
 
