@@ -45,7 +45,7 @@ public class veterinaria {
                 borrarConsola();
                 break;
             case 2:
-                funciones.ActualizarMascotas();
+                //funciones.ActualizarMascotas();
                 borrarConsola();
                 break;
             case 3:
@@ -134,118 +134,7 @@ public class veterinaria {
             }
         }
 
-        public void ActualizarMascotas() {
-            System.out.println("\n\t\t -- A C T U A L I Z A R  M A S C O T A --");
-            System.out.println("\t\t 1.Perro ");
-            System.out.println("\t\t 2. Gato ");
-            System.out.print("\tingrese el tipo: ");
-            opAnimaL = entradaScanner.nextByte();
-            entradaScanner.nextLine();
-            switch (opAnimaL) {
-                case 1:
-                    if (perros.isEmpty()) {
-                        System.out.println("no hay perros por actualizar");
-                    } else {
-                        System.out.print("Ingrese el ID de la mascota: ");
-                        IDAnimal = entradaScanner.nextShort();
-                        entradaScanner.nextLine();
-
-                        for (int i = 0; i < perros.size(); i++) {
-                            if (perros.get(i).getId() == IDAnimal) {
-                                System.out.println("1. color");
-                                System.out.println("2.edad");
-                                System.out.println("3.precio");
-                                System.out.println("4.origen");
-                                System.out.print("¿Qué desea actualizar?: ");
-                                actualizarAnimal = entradaScanner.nextByte();
-                                entradaScanner.nextLine();
-                                switch (actualizarAnimal) {
-                                    case 1:
-                                        System.out.print("Ingrese el nuevo color: ");
-                                        colorAnimal = entradaScanner.nextLine();
-                                        perros.get(i).setColorPelo(colorAnimal);
-                                        break;
-                    
-                                    case 2:
-                                        System.out.print("Ingrese la nueva edad: ");
-                                        edadAnimal = entradaScanner.nextShort();
-                                        entradaScanner.nextLine();
-                                        perros.get(i).setEdad(edadAnimal);
-                                        break;
-                                    case 3:
-                                        System.out.print("Ingrese el nuevo precio: ");
-                                        precioAnimal = entradaScanner.nextDouble();
-                                        entradaScanner.nextLine();
-                                        perros.get(i).setCuantoCuesta(precioAnimal);
-                                        break;
-                                    case 4:
-                                        System.out.print("Ingrese el nuevo origen: ");
-                                        origenAnimal = entradaScanner.nextLine();
-                                        perros.get(i).setPaisOrigen(origenAnimal);
-                                        break;
-                                    default:
-                                        System.out.println("Opción invalida");
-                                        break;
-                                }
-                                break;
-
-                            } else {
-                                System.out.println("No se encuentra la mascota");
-                                break;
-                            }
-                        }
-                    }
-                    break;
-                case 2:
-
-                    if (gatos.isEmpty()) {
-                        System.out.println("No hay gatos por actualizar");
-                    } else {
-                        System.out.print("Ingrese el ID de la mascota: ");
-                        IDAnimal = entradaScanner.nextShort();
-                        entradaScanner.nextLine();
-                        for (int i = 0; i < gatos.size(); i++) {
-                            if (gatos.get(i).getId() == IDAnimal) {
-                                System.out.println("1. cantidad de dientes");
-                                System.out.println("2.precio");
-                                System.out.println("3.origen");
-                                System.out.print("¿Qué desea actualizar?: ");
-                                actualizarAnimal = entradaScanner.nextByte();
-                                entradaScanner.nextLine();
-                                switch (actualizarAnimal) {
-                                    case 1:
-                                        System.out.print("Ingrese la nueva cantidad de dientes: ");
-                                        cantidadDientesAnimal = entradaScanner.nextShort();
-                                        gatos.get(i).setCantidadDientes(cantidadDientesAnimal);
-                                        break;
-                    
-                                    case 2:
-                                        System.out.print("Ingrese el nuevo precio: ");
-                                        precioAnimal = entradaScanner.nextDouble();
-                                        entradaScanner.nextLine();
-                                        gatos.get(i).setCuantoCuesta(precioAnimal);
-                                        break;
-                                    case 3:
-                                        System.out.print("Ingrese el nuevo origen: ");
-                                        origenAnimal = entradaScanner.nextLine();
-                                        gatos.get(i).setPaisOrigen(origenAnimal);
-                                        break;
-                                    default:
-                                        System.out.println("Opción invalida");
-                                        break;
-                                }
-                                break;
-                            } else {
-                                System.out.println("No se encuentra la mascota");
-                                break;
-                            }
-                        }
-                    }
-                    break;
-            }
-
-        }
-
+      
  
 
         public void eliminarMascota() {
@@ -396,7 +285,7 @@ public class veterinaria {
         private String nombreAnimal, colorAnimal, origenAnimal, razaAnimal;
         private Double precioAnimal;
         private short cantidadDientesAnimal, edadAnimal, IDAnimal;
-
+        private int j=0;
     }
 
     private Scanner entradaScanner = new Scanner(System.in);
