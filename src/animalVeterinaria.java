@@ -9,7 +9,7 @@ public abstract class animalVeterinaria{
         this.nombreDelanimal=nombre;
     }
 
-    
+    public animalVeterinaria(){}
     public Double getCuantoCuesta() {
         return cuantoCuesta;
     }
@@ -35,15 +35,22 @@ public abstract class animalVeterinaria{
         vacunas.add(n);
     }
 
-    public ArrayList<String> setVacunas(){
+    public ArrayList<String> getVacunas(){
         return vacunas;
+    }
+    public String busqueda(String name){
+        for(String vacuna : this.vacunas){
+            if(vacuna.equals(name)){
+                return vacuna;
+            }
+        }return null;
     }
 
     ////// atributos en común
     private String nombreDelanimal;
     private Double cuantoCuesta;
     private String paisOrigen;
-    private ArrayList<String> vacunas= new ArrayList<>();
+    private ArrayList<String> vacunas= new ArrayList<String>();
     //////
     
 
