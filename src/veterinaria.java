@@ -33,7 +33,7 @@ public class veterinaria {
         System.out.println("\t\t| 3.Eliminar mascota          |");
         System.out.println("\t\t| 4.Buscar mascota por nombre |");
         System.out.println("\t\t| 5.Listar todas las mascotas |");
-        System.out.println("\t\t| 6.Salir                     |");
+        System.out.println("\t\t| 6.Salir del menu principal  |");
         System.out.println("\t\t|_____________________________|");
     }
 
@@ -62,9 +62,7 @@ public class veterinaria {
                 borrarConsola();
                 break;
             case 6:
-                System.out.println("\t\t    Programa Finalizado");
-                System.exit(1);
-                break;
+                segundoMenu();break;
             default:
                 System.out.println("\t\t Opcion Invalida");
                 break;
@@ -77,7 +75,62 @@ public class veterinaria {
             entradaScanner.next().charAt(0);
             new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
         } catch (Exception e) {
-            /* No hacer nada */
+        }
+    }
+    public void segundoMenu(){
+        while(true){
+        System.out.println("\t\t ________________________________________________________");
+        System.out.println("\t\t|              M E N U    S E C U N D A R I O           | ");
+        System.out.println("\t\t| 1.Top 5 mascotas mas caras                            |");
+        System.out.println("\t\t| 2.Buscar mascotas con una vacuna en especifico        |");
+        System.out.println("\t\t| 3.Listar mascotas que no son de latinoamerica         |");
+        System.out.println("\t\t| 4.Salir                                               |");
+        System.out.println("\t\t|_______________________________________________________|");
+        System.out.print("\n\t\t  Digite la opcion deseada: ");
+        Byte opcion = entradaScanner.nextByte();
+        entradaScanner.nextLine();
+        ArrayList<animalVeterinaria> mascotasCostosas= new ArrayList<animalVeterinaria>(); 
+        mascotasCostosas.addAll(perros);
+        mascotasCostosas.addAll(gatos);        
+        switch(opcion){
+            case 1 :
+            System.out.println("\n");
+            for(int i=0; i<mascotasCostosas.size()-1;i++){
+                    int maxIdx = i;
+                    for (int j = i + 1; j < mascotasCostosas.size(); j++) {
+                        if (mascotasCostosas.get(j).getCuantoCuesta() > mascotasCostosas.get(maxIdx).getCuantoCuesta()) {
+                            maxIdx = j;
+                        }
+                    }
+                    animalVeterinaria temp = mascotasCostosas.get(i);
+                    mascotasCostosas.set(i, mascotasCostosas.get(maxIdx));
+                    mascotasCostosas.set(maxIdx, temp);
+                }
+                System.out.println("\n\t   - Top 5 mascotas mas costosos   -");
+            
+                for(int i=0; i<mascotasCostosas.size();i++){
+                    if(i < 5){
+                        System.out.print("Nombre: "+mascotasCostosas.get(i).getNombreDelanimal()+" --- Precio: " );
+                        System.out.println(mascotasCostosas.get(i).getCuantoCuesta());
+                    }   
+                } borrarConsola(); break;
+            case 2 :
+                System.out.print("Digite el nombre de la vacuna a buscar: ");
+                String nameVacuna = entradaScanner.nextLine();
+                System.out.println("Nombres de las mascotas con la vacuna ingresado");
+                for(int i=0; i<mascotasCostosas.size(); i++){
+                    if(mascotasCostosas.get(i).busqueda(nameVacuna) != null){
+                        System.out.print(mascotasCostosas.get(i).getNombreDelanimal()+" --- ");
+                        System.out.println("\n");
+                    }
+                }    
+                borrarConsola();break;
+            case 3 : borrarConsola();break;
+            case 4:
+                System.out.println("\nGracias por usar el programa");
+                System.exit(0); break;
+
+            }
         }
     }
 
@@ -149,7 +202,7 @@ public class veterinaria {
                     gatos.add(new animalGato(precioAnimal, origenAnimal, nombreAnimal, razaAnimal,
                             cantidadDientesAnimal));
                     entradaScanner.nextLine();
-                    System.out.println("tiene vacunas el perro? \n1. si \t 2. no");
+                    System.out.println("tiene vacunas el gato? \n1. si \t 2. no");
                     System.out.print("Ingrese la opción: ");
                     opcion = entradaScanner.nextByte();
                     entradaScanner.nextLine();
@@ -385,7 +438,7 @@ public class veterinaria {
                                 System.out.println("Costo:" + perros.get(i).getCuantoCuesta());
                                 System.out.println("Color de pelo: " + perros.get(i).getColorPelo());
                                 System.out.println("Edad: " + perros.get(i).getEdad());
-                                System.out.println("Vacunas: " + perros.get(i).setVacunas());
+                                System.out.println("Vacunas: " + perros.get(i).getVacunas());
                                 System.out.println("___________________________________________________________");
                                 break;
                             } else {
@@ -409,7 +462,7 @@ public class veterinaria {
                                 System.out.println("Costo:" + gatos.get(i).getCuantoCuesta());
                                 System.out.println("Raza: " + gatos.get(i).getRaza());
                                 System.out.println("Cantidad de dientes: " + gatos.get(i).getCantidadDientes());
-                                System.out.println("Vacunas: " + gatos.get(i).setVacunas());
+                                System.out.println("Vacunas: " + gatos.get(i).getVacunas());
                                 System.out.println("___________________________________________________________");
                                 break;
                             } else {
@@ -437,7 +490,7 @@ public class veterinaria {
                     System.out.println("Costo:" + perros.get(i).getCuantoCuesta());
                     System.out.println("Color de pelo: " + perros.get(i).getColorPelo());
                     System.out.println("Edad: " + perros.get(i).getEdad());
-                    System.out.println("Vacunas: " + perros.get(i).setVacunas());
+                    System.out.println("Vacunas: " + perros.get(i).getVacunas());
                     System.out.println("\n ________________________________________________________________________");
                 }
             }
@@ -453,14 +506,14 @@ public class veterinaria {
                     System.out.println("Costo:" + gatos.get(i).getCuantoCuesta());
                     System.out.println("Raza: " + gatos.get(i).getRaza());
                     System.out.println("Cantidad de dientes: " + gatos.get(i).getCantidadDientes());
-                    System.out.println("Vacunas: " + gatos.get(i).setVacunas());
+                    System.out.println("Vacunas: " + gatos.get(i).getVacunas());
                     System.out.println("\n ________________________________________________________________________");
                 }
             }
         }
 
         private byte opAnimaL, actualizarAnimal;
-        private String nombreAnimal, colorAnimal, origenAnimal, razaAnimal, nomvac;;
+        private String nombreAnimal, colorAnimal, origenAnimal, razaAnimal, nomvac;
         private Double precioAnimal;
         private short cantidadDientesAnimal, edadAnimal, IDAnimal;
     }
